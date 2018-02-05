@@ -1,10 +1,10 @@
 {
   "maxTokenSupply" : 4e27,
 
-  "presaleCap" : 1e21,
-  "presaleStartTimestamp" : 1517493600,
-  "presaleEndTimestamp"   : 1518627600,
-  "presaleRatioETH" : 2e5,
+  "presaleCap" : 1111e18,
+  "presaleStartTimestamp" : 1517839200,
+  "presaleEndTimestamp"   : 1519048800,
+  "presaleRatioETH" : 180000,
 
   "crowdsaleCap" : 9e21,
   "crowdsaleStartTimestamp" : 1519232400,

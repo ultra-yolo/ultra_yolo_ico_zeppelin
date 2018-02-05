@@ -1,9 +1,12 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.18;
 
 import './YoloToken.sol';
 import './Crowdsale.sol';
 import './CappedCrowdsale.sol';
+
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
+import 'zeppelin-solidity/contracts/lifecycle/Pausable.sol';
+import 'zeppelin-solidity/contracts/lifecycle/TokenDestructible.sol';
 
 /**
  * @title YoloTokenPresale
@@ -15,14 +18,11 @@ import 'zeppelin-solidity/contracts/math/SafeMath.sol';
  * Total supply of presale + mainsale will be 2,000,000,000
 */
 
-contract YoloTokenPresale is CappedCrowdsale, Pausable {
+contract YoloTokenPresale is CappedCrowdsale, Pausable, TokenDestructible {
   using SafeMath for uint256;
 
   uint256 public rateTierHigher;
   uint256 public rateTierNormal;
-
-  /** logging for owner withdrawing from the funds raised */
-  event OwnerWithdraw(uint256 amount);
 
   function YoloTokenPresale (uint256 _cap, uint256 _startTime, uint256 _endTime, uint256 _rate, address _wallet,
   	address _tokenAddress) 
@@ -49,13 +49,41 @@ contract YoloTokenPresale is CappedCrowdsale, Pausable {
     super.buyTokens(beneficiary);
   }
 
-  function withdrawFunds(uint256 amount) onlyOwner public {
-    OwnerWithdraw(amount);
-    wallet.transfer(amount);
+  function validPurchase() internal view returns (bool) {
+    return super.validPurchase() && !paused;
+  }
+
+  function setCap(uint256 _cap) onlyOwner public {
+    cap = _cap;
+  }
+
+  function setStartTime(uint256 _startTime) onlyOwner public {
+    startTime = _startTime;
+  }
+
+  function setEndTime(uint256 _endTime) onlyOwner public {
+    endTime = _endTime;
+  }
+
+  function setRate(uint256 _rate) onlyOwner public {
+    rate = _rate;
+    rateTierHigher = _rate.mul(27).div(20);
+    rateTierNormal = _rate.mul(5).div(4);
   }
 
   function setIsTesting(bool _isTesting) onlyOwner public {
     isTesting = _isTesting;
   }
 
+  function setWallet(address _wallet) onlyOwner public {
+    wallet = _wallet;
+  }
+
+  function withdrawFunds(uint256 amount) onlyOwner public {
+    wallet.transfer(amount);
+  }
+
+  function resetTokenOwnership() onlyOwner public { 
+    token.transferOwnership(owner);
+  }
 }

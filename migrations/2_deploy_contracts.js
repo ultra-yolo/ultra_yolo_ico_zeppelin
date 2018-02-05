@@ -14,5 +14,4 @@ module.exports = function(deployer, network, accounts) {
     return deployer.deploy(YoloTokenPresale, settings.presaleCap, settings.presaleStartTimestamp,
       settings.presaleEndTimestamp, presaleRatioETH, settings.ultraYOLOWallet, YoloToken.address);
   });
-
 }
