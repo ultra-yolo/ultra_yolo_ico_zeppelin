@@ -9,6 +9,8 @@ import 'zeppelin-solidity/contracts/crowdsale/CappedCrowdsale.sol';
 
 /**
  * The YoloTokenCrowdsale contract conducts crowdsale for UltraYOLO project 
+
+ * WIP
  */
 contract YoloTokenCrowdsale is CappedCrowdsale, Pausable {
   using SafeMath for uint256;

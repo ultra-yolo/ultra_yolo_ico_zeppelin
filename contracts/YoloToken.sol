@@ -13,7 +13,7 @@ import 'zeppelin-solidity/contracts/token/PausableToken.sol';
 
 contract YoloToken is CappedToken, PausableToken, ERC223 {
 
-  string public constant name     = "Yolo Token";
+  string public constant name     = "Yolo";
   string public constant symbol   = "YOLO";
   uint   public constant decimals = 18;
 

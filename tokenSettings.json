@@ -1,15 +1,15 @@
 {
   "maxTokenSupply" : 4e27,
 
-  "presaleCap" : 1111e18,
-  "presaleStartTimestamp" : 1517839200,
-  "presaleEndTimestamp"   : 1519048800,
-  "presaleRatioETH" : 180000,
+  "presaleCap" : 750e18,
+  "presaleStartTimestamp" : 1517925600,
+  "presaleEndTimestamp"   : 1520604000,
+  "presaleRatioETH" : 200000,
 
-  "crowdsaleCap" : 9e21,
-  "crowdsaleStartTimestamp" : 1519232400,
-  "crowdsaleEndTimestamp"   : 1521651600,
-  "crowdsaleRatioETH" : 2e5,
+  "crowdsaleCap" : 9000e18,
+  "crowdsaleStartTimestamp" : 1520604000,
+  "crowdsaleEndTimestamp"   : 1528552800,
+  "crowdsaleRatioETH" : 200000,
 
   "ultraYOLOWallet": "0x8aa329fdf2492f7b6e9ba8f03ad7570717fe476f",
   "jackpotVault": "0x6c068c448e6d40e7e1c5e9d12ee9c247fad792b2"
