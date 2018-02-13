@@ -33,9 +33,6 @@ contract Crowdsale {
   // amount of raised money in wei
   uint256 public weiRaised;
 
-  // flag to signal testing mode and transactions are valid regardless of times
-  bool public isTesting;
-
   /**
    * event for token purchase logging
    * @param purchaser who paid for the tokens
@@ -92,7 +89,7 @@ contract Crowdsale {
   function validPurchase() internal view returns (bool) {
     bool withinPeriod = now >= startTime && now <= endTime;
     bool nonZeroPurchase = msg.value != 0;
-    return (isTesting || withinPeriod) && nonZeroPurchase;
+    return withinPeriod && nonZeroPurchase;
   }
 
   // @return true if crowdsale event has ended

@@ -26,8 +26,8 @@ contract YoloTokenPresale is CappedCrowdsale, Pausable, TokenDestructible {
 
   function YoloTokenPresale (uint256 _cap, uint256 _startTime, uint256 _endTime, uint256 _rate, address _wallet,
   	address _tokenAddress) 
-  	CappedCrowdsale(_cap)
-  	Crowdsale(_startTime, _endTime, _rate, _wallet)
+  CappedCrowdsale(_cap)
+  Crowdsale(_startTime, _endTime, _rate, _wallet)
   {
     token = YoloToken(_tokenAddress);
     rateTierHigher = _rate.mul(27).div(20);
@@ -71,10 +71,6 @@ contract YoloTokenPresale is CappedCrowdsale, Pausable, TokenDestructible {
     rateTierNormal = _rate.mul(5).div(4);
   }
 
-  function setIsTesting(bool _isTesting) onlyOwner public {
-    isTesting = _isTesting;
-  }
-
   function setWallet(address _wallet) onlyOwner public {
     wallet = _wallet;
   }
@@ -83,7 +79,8 @@ contract YoloTokenPresale is CappedCrowdsale, Pausable, TokenDestructible {
     wallet.transfer(amount);
   }
 
-  function resetTokenOwnership() onlyOwner public { 
+  function resetTokenOwnership() onlyOwner public {
     token.transferOwnership(owner);
   }
+
 }

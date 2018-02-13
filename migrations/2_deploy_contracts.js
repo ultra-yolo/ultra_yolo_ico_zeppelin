@@ -1,6 +1,7 @@
 var SafeMath = artifacts.require('zeppelin-solidity/contracts/math/SafeMath.sol');
 var YoloToken = artifacts.require("./YoloToken.sol");
 var YoloTokenPresale = artifacts.require("./YoloTokenPresale.sol");
+var YoloTokenCrowdsale = artifacts.require("./YoloTokenCrowdsale.sol");
 
 let settings = require("../tokenSettings.json");
 
