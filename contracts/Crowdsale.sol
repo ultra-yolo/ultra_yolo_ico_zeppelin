@@ -62,7 +62,6 @@ contract Crowdsale {
     return new MintableToken();
   }
 
-
   // fallback function can be used to buy tokens
   function () external payable {
     buyTokens(msg.sender);

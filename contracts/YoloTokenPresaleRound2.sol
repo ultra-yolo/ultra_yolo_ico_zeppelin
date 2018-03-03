@@ -3,22 +3,21 @@ pragma solidity ^0.4.18;
 import './YoloToken.sol';
 import './Crowdsale.sol';
 import './CappedCrowdsale.sol';
+import './SpecialRatedCrowdsale.sol';
 
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import 'zeppelin-solidity/contracts/lifecycle/Pausable.sol';
-import 'zeppelin-solidity/contracts/lifecycle/TokenDestructible.sol';
 
 /**
  * @title YoloTokenPresaleRound2
  * @author UltraYOLO
  
  * Based on widely-adopted OpenZepplin project
- * A total of 200,000,000 YOLO tokens will be sold during presale at a discount rate of 20%
- * Supporters who purchase more than 10 ETH worth of YOLO token will have a discount of 25%
+ * A total of 200,000,000 YOLO tokens will be sold during presale at a discount rate of 25%
+ * Supporters who purchase more than 10 ETH worth of YOLO token will have a discount of 35%
  * Total supply of presale + presale_round_2 + mainsale will be 2,000,000,000
 */
-
-contract YoloTokenPresaleRound2 is CappedCrowdsale, Pausable, TokenDestructible {
+contract YoloTokenPresaleRound2 is SpecialRatedCrowdsale, CappedCrowdsale, Pausable {
   using SafeMath for uint256;
 
   uint256 public rateTierHigher;
@@ -30,8 +29,8 @@ contract YoloTokenPresaleRound2 is CappedCrowdsale, Pausable, TokenDestructible 
   Crowdsale(_startTime, _endTime, _rate, _wallet)
   {
     token = YoloToken(_tokenAddress);
-    rateTierHigher = _rate.mul(5).div(4);
-    rateTierNormal = _rate.mul(6).div(5);
+    rateTierHigher = _rate.mul(27).div(20);
+    rateTierNormal = _rate.mul(5).div(4);
   }
 
   function () external payable {
@@ -66,8 +65,8 @@ contract YoloTokenPresaleRound2 is CappedCrowdsale, Pausable, TokenDestructible 
 
   function setRate(uint256 _rate) onlyOwner public {
     rate = _rate;
-    rateTierHigher = _rate.mul(5).div(4);
-    rateTierNormal = _rate.mul(6).div(5);
+    rateTierHigher = _rate.mul(27).div(20);
+    rateTierNormal = _rate.mul(5).div(4);
   }
 
   function setWallet(address _wallet) onlyOwner public {

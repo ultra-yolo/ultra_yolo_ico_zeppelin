@@ -17,7 +17,6 @@ import 'zeppelin-solidity/contracts/lifecycle/TokenDestructible.sol';
  * Supporters who purchase more than 25 ETH worth of YOLO token will have a discount of 35%
  * Total supply of presale + mainsale will be 2,000,000,000
 */
-
 contract YoloTokenPresale is CappedCrowdsale, Pausable, TokenDestructible {
   using SafeMath for uint256;
 

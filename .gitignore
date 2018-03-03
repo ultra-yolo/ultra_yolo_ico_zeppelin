@@ -62,3 +62,4 @@ node_modules/
 build/
 secret
 truffle.js
+contracts/YoloTokenPrivateSale.sol

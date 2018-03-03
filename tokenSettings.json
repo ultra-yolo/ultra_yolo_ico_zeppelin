@@ -10,6 +10,10 @@
   "presaleRound2StartTimestamp" : 1520604000,
   "presaleRound2EndTimestamp"   : 1523282400,
 
+  "privateSaleCap" : 750e18,
+  "privateSaleStartTimestamp" : 1519912800,
+  "privateSaleStopTimestamp" : 1527861600,
+
   "crowdsaleCap" : 9000e18,
   "crowdsaleStartTimestamp" : 1520604000,
   "crowdsaleEndTimestamp"   : 1528552800,
