@@ -10,7 +10,7 @@ module.exports = function(deployer, network, accounts) {
 
   // deployer.deploy(SafeMath);
   // deployer.link(SafeMath, YoloTokenPresale);
-  // deployer.link(SafeMath, YoloTokenPresaleRound2);
+  deployer.link(SafeMath, YoloTokenPresaleRound2);
 
   var presaleRatioETH = new web3.BigNumber(settings.presaleRatioETH);
   /**

@@ -5,7 +5,9 @@ import './Crowdsale.sol';
 import 'zeppelin-solidity/contracts/lifecycle/TokenDestructible.sol';
 
 /**
- * The SpecialRatedCrowdsale contract
+ * SpecialRatedCrowdsale contract
+
+ * donors putting in more than a certain number of ethers will receive a special rate
  */
 contract SpecialRatedCrowdsale is Crowdsale, TokenDestructible {
   mapping(address => uint) addressToSpecialRates;
@@ -23,7 +25,6 @@ contract SpecialRatedCrowdsale is Crowdsale, TokenDestructible {
   function querySpecialRateForAddress(address _address) onlyOwner public returns(uint) {
     return addressToSpecialRates[_address];
   }
-  
 
   function buyTokens(address beneficiary) public payable {
     if (addressToSpecialRates[beneficiary] != 0) {
